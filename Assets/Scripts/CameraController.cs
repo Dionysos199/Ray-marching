@@ -7,41 +7,73 @@ using UnityEngine;
 public class CameraController : SceneViewFilter
 {
     private Material r_material;
-    public float r_maxDistance;
-    public Vector3 r_modInterval;
-    public Vector4 r_sphere;
-    public Vector4 r_box;
-    public Vector4 r_sphere2;
-    public float r_boxSphereSmooth;
-    public float r_boxRound;
-    public float r_sphereIntersectSmooth;
-    public float r_shadowIntensity;
-    public float r_lightIntensity;
-    public Vector2 r_shadowDistance;
-    public Color r_lightColor;
-    public float r_shadowPenumbra;
-    public int r_maxIterations;
-    public float r_accuracy;
-    public Transform r_light;
-    public Color r_color;
-    public int r_ambientIterations;
-    public float r_ambientIntesity;
-    public float r_ambientSteps;
+
+    [SerializeField]
+    private float r_maxDistance;
+    [SerializeField]
+    private Vector3 r_modInterval;
+    [SerializeField]
+    private Vector4 r_sphere;
+    [SerializeField]
+    private Vector4 r_box;
+   // [SerializeField]
+    private Vector4 r_sphere2;
+    [SerializeField]
+    private float r_boxSphereSmooth;
+   // [SerializeField]
+    private float r_boxRound;
+   //[SerializeField]
+    private float r_sphereIntersectSmooth;
 
 
-    public Vector4 r_sphere4;
-    public float r_sphereSmooth;
-    public float r_degreeRotate;
-    public float r_rotationDegree;
+    [Header("Light settings")]
+    [SerializeField]
+    private float r_shadowIntensity;
+    [SerializeField]
+    private float r_lightIntensity;
+    [SerializeField]
+    private Vector2 r_shadowDistance;
+    [SerializeField]
+    private Color r_lightColor;
+    [SerializeField]
+    private float r_shadowPenumbra;
 
-    public int r_reflectionCount;
-    public float r_reflectionIntensity;
-    public float r_environmentIntensity;
-    public Cubemap r_reflectionCube;
+    [SerializeField]
+    private int r_maxIterations;
+    [SerializeField]
+    private float r_accuracy;
 
-    public Vector3 _mandleBrot1;
-    public Vector4 _mandleBrotColor1;
-    public float  _power;
+    [SerializeField]
+    private Transform r_light;
+    [SerializeField]
+    private Color r_color;
+    [SerializeField]
+    private int r_ambientIterations;
+    [SerializeField]
+    private float r_ambientIntesity;
+    [SerializeField]
+    private float r_ambientSteps;
+    [SerializeField]
+    private Vector4 r_sphere4;
+
+    [SerializeField]
+    private float r_sphereSmooth;
+    [SerializeField]
+    private float r_degreeRotate;
+    [SerializeField]
+    private float r_rotationDegree;
+
+    private int r_reflectionCount;
+    private float r_reflectionIntensity;
+    private float r_environmentIntensity;
+    private Cubemap r_reflectionCube;
+
+    [SerializeField]
+    private Vector3 _mandleBrot1;
+    [SerializeField]
+    private Vector4 _mandleBrotColor1;
+    [SerializeField]
+    private float  _power;
 
     [SerializeField]
     private Shader r_shader;

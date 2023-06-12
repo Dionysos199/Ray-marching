@@ -26,6 +26,7 @@
             uniform float4x4 r_cameraFrustum, r_cameraToWorld;
             uniform float4 r_box, r_sphere, r_sphere2;
             uniform float r_boxRound, r_boxSphereSmooth, r_sphereIntersectSmooth;
+
             uniform float3 r_modInterval;
             uniform float3 r_light, r_lightColor;
             uniform float r_lightIntensity;
@@ -102,16 +103,22 @@
                 return opU(sphere, ground);
                */
                                  
-                  //float MandleBrot1 = mandleBulb(p-_mandleBrot1.xyz,_mandleBrotColor1.xyzw);
-                  float fractal1 = DE(p-_mandleBrot1.xyz,_power);
-                  return fractal1;
-
+                  //
                   //float modX = pMod1(p.x, r_modInterval.x);
                   //float modY = pMod1(p.y, r_modInterval.y);
-                  //float modZ = pMod1(p.z, r_modInterval.z);
-                  //float sphere = sdSphere(p - r_sphere.xyz, r_sphere.w);
-                  //float Box1 = sdBox(p - r_box.xyz, r_box.www);
-                  //return opS(sphere, Box1);
+                  
+                  //float MandleBrot1 = mandleBulb(p-_mandleBrot1.xyz,_mandleBrotColor1.xyzw);
+                  //float fractal1 = DE(p-_mandleBrot1.xyz,_power);
+                 // return fractal1;
+
+                  //
+                  //
+
+                  float modZ = pMod1(p.z, r_modInterval.z);
+                  float sphere = sdSphere(p - r_sphere.xyz, r_sphere.w);
+                  float Box1 = sdBox(p - r_box.xyz, r_box.www);
+                 return opSS(sphere, Box1,r_boxSphereSmooth);
+
             }
 
             float3 getNormal(float3 p) {
