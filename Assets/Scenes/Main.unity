@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 527128550}
   - component: {fileID: 527128553}
   - component: {fileID: 527128549}
-  - component: {fileID: 527128552}
+  - component: {fileID: 527128554}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -207,45 +207,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &527128552
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 527128548}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: efbbbdea99f2c13428a3d5e52312cafc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  r_maxDistance: 62
-  r_modInterval: {x: 1.28, y: 4, z: 4}
-  r_sphere: {x: 0, y: 0, z: 0, w: 1.2}
-  r_box: {x: 0, y: 0, z: 0, w: 1.04}
-  r_boxSphereSmooth: 0.18
-  r_shadowIntensity: 1.4
-  r_lightIntensity: 1.18
-  r_shadowDistance: {x: 0.1, y: 1}
-  r_lightColor: {r: 1, g: 1, b: 1, a: 0}
-  r_shadowPenumbra: 94
-  r_maxIterations: 200
-  r_accuracy: 0.001
-  r_light: {fileID: 1894293095}
-  r_color: {r: 0.7157339, g: 1, b: 0.6356355, a: 0}
-  r_ambientIterations: 3
-  r_ambientIntesity: 0.47
-  r_ambientSteps: 0.2
-  r_sphere4: {x: -0.72, y: 5.2, z: 16.3, w: 3.79}
-  r_sphereSmooth: 0.09
-  r_degreeRotate: 44.79
-  r_rotationDegree: 1.9
-  _mandleBrot1: {x: 0.22, y: 0, z: 0}
-  _mandleBrotColor1: {x: 0, y: 0, z: 0, w: 0}
-  _power: 7.16
-  r_shader: {fileID: 4800000, guid: 32901e08914e41c44966a38997bedf0e, type: 3}
 --- !u!114 &527128553
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -262,6 +225,148 @@ MonoBehaviour:
   shiftAdd: 100
   maxShift: 600
   camSens: 0.2
+--- !u!114 &527128554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 527128548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92ece19aa86b5412d8b5cec0db6780ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  r_maxDistance: 85
+  r_modInterval: {x: 10.35, y: 0, z: 0}
+  r_sphere: {x: -2.11, y: 0, z: 0, w: 0.42}
+  r_radius: 2.1
+  r_box: {x: 0, y: 0, z: 0, w: 0.36}
+  r_sphere2: {x: 0, y: 0, z: 0, w: 0}
+  r_boxSphereSmooth: 1.42
+  r_boxRound: 0
+  r_sphereIntersectSmooth: 2.95
+  r_shadowIntensity: 2.64
+  r_lightIntensity: 2.77
+  r_shadowDistance: {x: 0, y: 0}
+  r_lightColor: {r: 0.7264151, g: 0.065103225, b: 0.065103225, a: 0}
+  r_shadowPenumbra: 2.86
+  r_maxIterations: 91
+  r_accuracy: 0.001
+  r_light: {fileID: 1894293095}
+  r_color: {r: 0.50284797, g: 0.7893671, b: 0.9433962, a: 0}
+  r_ambientIterations: 43
+  r_ambientIntesity: 9.18
+  r_ambientSteps: 4.85
+  _mandleBrot1: {x: 0, y: 0, z: 0}
+  _mandleBrotColor1: {x: 0, y: 0, z: 0, w: 0}
+  _power: 0
+  r_sphere4: {x: 0, y: 0, z: 0, w: 2.36}
+  r_sphereSmooth: 0.93
+  r_degreeRotate: 0
+  r_rotationDegree: 1.49
+  r_reflectionCount: 24
+  r_reflectionIntensity: 0.59
+  r_environmentIntensity: 1.62
+  r_reflectionCube: {fileID: 8900000, guid: 1abc9e26c879b4add9046be1f753f256, type: 3}
+  r_shader: {fileID: 4800000, guid: 32901e08914e41c44966a38997bedf0e, type: 3}
+--- !u!1 &876768698
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 876768702}
+  - component: {fileID: 876768701}
+  - component: {fileID: 876768700}
+  - component: {fileID: 876768699}
+  m_Layer: 0
+  m_Name: Cube
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &876768699
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 876768698}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &876768700
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 876768698}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 5b0be6b39fce54b319ff9b5e74da33bd, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &876768701
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 876768698}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &876768702
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 876768698}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 13.51, z: -0.818}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1894293093
 GameObject:
   m_ObjectHideFlags: 0
@@ -354,5 +459,5 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50.737, y: 32.419, z: -10}

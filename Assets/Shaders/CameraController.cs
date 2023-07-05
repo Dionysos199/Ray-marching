@@ -1,79 +1,51 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [ExecuteInEditMode]
 [RequireComponent(typeof(Camera))]
 public class CameraController : SceneViewFilter
 {
     private Material r_material;
+    public float r_maxDistance;
+    public Vector3 r_modInterval;
+    public Vector4 r_sphere;
+    public float r_radius;
 
-    [SerializeField]
-    private float r_maxDistance;
-    [SerializeField]
-    private Vector3 r_modInterval;
-    [SerializeField]
-    private Vector4 r_sphere;
-    [SerializeField]
-    private Vector4 r_box;
-   // [SerializeField]
-    private Vector4 r_sphere2;
-    [SerializeField]
-    private float r_boxSphereSmooth;
-   // [SerializeField]
-    private float r_boxRound;
-   //[SerializeField]
-    private float r_sphereIntersectSmooth;
+    public Vector4 r_box;
+    public Vector4 r_sphere2;
+    public float r_boxSphereSmooth;
+    public float r_boxRound;
+    public float r_sphereIntersectSmooth;
+    public float r_shadowIntensity;
+    public float r_lightIntensity;
+    public Vector2 r_shadowDistance;
+    public Color r_lightColor;
+    public float r_shadowPenumbra;
+    public int r_maxIterations;
+    public float r_accuracy;
+    public Transform r_light;
+    public Color r_color;
+    public int r_ambientIterations;
+    public float r_ambientIntesity;
+    public float r_ambientSteps;
 
 
-    [Header("Light settings")]
-    [SerializeField]
-    private float r_shadowIntensity;
-    [SerializeField]
-    private float r_lightIntensity;
-    [SerializeField]
-    private Vector2 r_shadowDistance;
-    [SerializeField]
-    private Color r_lightColor;
-    [SerializeField]
-    private float r_shadowPenumbra;
+    [Header("fractals")]
+    public Vector3 _mandleBrot1;
+    public Vector4 _mandleBrotColor1;
+    public float _power;
 
-    [SerializeField]
-    private int r_maxIterations;
-    [SerializeField]
-    private float r_accuracy;
 
-    [SerializeField]
-    private Transform r_light;
-    [SerializeField]
-    private Color r_color;
-    [SerializeField]
-    private int r_ambientIterations;
-    [SerializeField]
-    private float r_ambientIntesity;
-    [SerializeField]
-    private float r_ambientSteps;
-    [SerializeField]
-    private Vector4 r_sphere4;
+    public Vector4 r_sphere4;
+    public float r_sphereSmooth;
+    public float r_degreeRotate;
+    public float r_rotationDegree;
 
-    [SerializeField]
-    private float r_sphereSmooth;
-    [SerializeField]
-    private float r_degreeRotate;
-    [SerializeField]
-    private float r_rotationDegree;
+    public int r_reflectionCount;
+    public float r_reflectionIntensity;
+    public float r_environmentIntensity;
+    public Cubemap r_reflectionCube;
 
-    private int r_reflectionCount;
-    private float r_reflectionIntensity;
-    private float r_environmentIntensity;
-    private Cubemap r_reflectionCube;
-
-    [SerializeField]
-    private Vector3 _mandleBrot1;
-    [SerializeField]
-    private Vector4 _mandleBrotColor1;
-    [SerializeField]
-    private float  _power;
+    [Header("Bubbles")]
 
     [SerializeField]
     private Shader r_shader;
@@ -89,17 +61,31 @@ public class CameraController : SceneViewFilter
             return r_material;
         }
     }
-    
+  
     private Camera r_camera;
-    public Camera raymarchingCamera {
-        get { 
-            if (!r_camera) {
+    public Camera raymarchingCamera
+    {
+        get
+        {
+            if (!r_camera)
+            {
                 r_camera = GetComponent<Camera>();
             }
             return r_camera;
         }
     }
-    
+
+
+    public void updateSphereRadius()
+    {
+    }
+    //SignalProcessor signalProcessor = new SignalProcessor(20, true);
+    //public void OnDataReceived(string data, UduinoDevice device)
+    //{
+    //    float value = float.Parse(data);
+    //    signalProcessor.AddValue(value);
+    //    float n = signalProcessor.GetNormalized();
+    //}
     private void OnRenderImage(RenderTexture source, RenderTexture destination)
     {
         if (!raymarchingMaterial)
@@ -108,16 +94,19 @@ public class CameraController : SceneViewFilter
             return;
         }
 
-        raymarchingMaterial.SetFloat("_power", _power);
 
+        raymarchingMaterial.SetVector("_mandleBrot1", _mandleBrot1);
+        raymarchingMaterial.SetVector("_mandleBrotColor1", _mandleBrotColor1);
+        raymarchingMaterial.SetFloat("_power", _power);
 
         raymarchingMaterial.SetInt("r_maxIterations", r_maxIterations);
         raymarchingMaterial.SetFloat("r_accuracy", r_accuracy);
-        raymarchingMaterial.SetColor("r_mainColor", r_color);
         raymarchingMaterial.SetVector("r_sphere", r_sphere);
         raymarchingMaterial.SetVector("r_box", r_box);
+
+
         raymarchingMaterial.SetVector("r_light", r_light ? r_light.forward : Vector3.down);
-        
+
         raymarchingMaterial.SetColor("r_lightColor", r_lightColor);
         raymarchingMaterial.SetFloat("r_lightIntensity", r_lightIntensity);
         raymarchingMaterial.SetFloat("r_shadowIntensity", r_shadowIntensity);
@@ -145,6 +134,7 @@ public class CameraController : SceneViewFilter
         raymarchingMaterial.SetTexture("r_reflectionCube", r_reflectionCube);
 
         RenderTexture.active = destination;
+
 
         raymarchingMaterial.SetTexture("_MainTex", source);
 
@@ -186,7 +176,7 @@ public class CameraController : SceneViewFilter
         frustum.SetRow(2, r_BOTTOMRIGHT);
         frustum.SetRow(1, r_TOPRIGHT);
         frustum.SetRow(0, r_TOPLEFT);
-       
+
 
         return frustum;
     }

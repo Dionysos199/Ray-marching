@@ -125,3 +125,45 @@ float DE(float3 pos, float Power) {
 	}
 	return 0.5*log(r)*r/dr;
 }
+
+float sdEllipsoid(in float3 p, in float3 r)
+{
+	float k0 = length(p / r);
+	float k1 = length(p / (r * r));
+	return k0 * (k0 - 1.0) / k1;
+}
+float smin(float a, float b, float k)
+{
+	float h = max(k - abs(a - b), 0.0);
+	return min(a, b) - h * h * 0.25 / k;
+
+}
+float2 stalagmite(float3 pos) {
+	// ground
+	float fh = -0.1 - 0.05 * (sin(pos.x * 2.0) + sin(pos.z * 2.0));
+
+	float d = pos.y - fh;
+	// bubbles
+
+	float2 res;
+
+	float3 vp = float3(fmod(abs(pos.x), 3.0), pos.y, fmod(pos.z + 1.5, 3.0) - 1.5);
+	float2 id = float2(floor(pos.x / 3.0), floor((pos.z + 1.5) / 3.0));
+	float fid = id.x * 11.1 + id.y * 31.7;
+	float fy = frac(fid * 1.312 + _Time.y * 0.02);
+	float y = -1.0 + 4.0 * fy;
+	float3  rad = float3(0.7, 1.0 + 0.5 * sin(fid), 0.7);
+	rad -= 0.1 * (sin(pos.x * 3.0) + sin(pos.y * 4.0) + sin(pos.z * 5.0));
+	float siz = 4.0 * fy * (1.0 - fy);
+	float d2 = sdEllipsoid(vp - float3(2.0, y, 0.0), siz * rad);
+
+	d2 *= 0.6;
+	d2 = min(d2, 2.0);
+	d = smin(d, d2, 0.32);
+
+	if (d < res.x) res = float2(d, 1.0);
+
+
+	return res;
+
+}

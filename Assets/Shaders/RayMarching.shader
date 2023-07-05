@@ -92,15 +92,28 @@
                 float sinY = sin(rad);
                 return float3(cosY * v.x - sinY * v.z, v.y, sinY * v.x + cosY * v.z);
             }
-            float r_distanceField(float3 p) {
-                /*float ground = sdPlane(p, float4(0, 1, 0, 0));
+
+            float ground(float3 p){
+                float ground = dot(p,normalize(float3(0,1,0)))+sin(p.x+_Time.y);
+                
+                //float modX = pMod1(p.x, r_modInterval.x);
                 float sphere = sdSphere(p - r_sphere4.xyz, r_sphere4.w);
                 for (int i = 0; i < 8; i++)
                 {
                     float sphereAdd = sdSphere(Rotatey(p, r_degreeRotate * i) - r_sphere4.xyz, r_sphere4.w);
                     sphere = opUS(sphere, sphereAdd, r_sphereSmooth);
                 }
-                return opU(sphere, ground);
+                return  opU(sphere,ground);
+
+            }
+            float sphereBox(float3 p){
+                        float sphere = sdSphere(p - r_sphere.xyz, r_sphere.w);
+                  float Box1 = sdBox(p - r_box.xyz, r_box.www);
+                 return opUS(sphere, Box1,r_boxSphereSmooth);
+
+            }
+            float r_distanceField(float3 p) {
+                /*
                */
                                  
                   //
@@ -112,12 +125,9 @@
                  // return fractal1;
 
                   //
-                  //
-
-                  float modZ = pMod1(p.z, r_modInterval.z);
-                  float sphere = sdSphere(p - r_sphere.xyz, r_sphere.w);
-                  float Box1 = sdBox(p - r_box.xyz, r_box.www);
-                 return opSS(sphere, Box1,r_boxSphereSmooth);
+                  //                  float modZ = pMod1(p.z, r_modInterval.z);
+                  return  ground(p);
+          
 
             }
 
